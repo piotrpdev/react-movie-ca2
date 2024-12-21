@@ -8,7 +8,7 @@ import Spinner from "../components/Spinner";
 import PageTemplate from "../components/TemplateMovieListPage";
 import { MoviesContext } from "../contexts/MoviesContext";
 
-const ToWatchMoviesPage = ({ session }) => {
+const ToWatchMoviesPage = () => {
   const { toWatchMovies: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run in parallel.
@@ -40,7 +40,7 @@ const ToWatchMoviesPage = ({ session }) => {
         return (
           <>
             <RemoveFromToWatch movie={movie} />
-            <WriteReview movie={movie} session={session} />
+            <WriteReview movie={movie} />
           </>
         );
       }}

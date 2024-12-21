@@ -15,7 +15,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
-const SiteHeader = ({ session }) => {
+const SiteHeader = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const context = useContext(AuthContext);
@@ -42,7 +42,6 @@ const SiteHeader = ({ session }) => {
 
   const handleMenuSelect = async (pageURL) => {
     if (pageURL === "#signOut") {
-      // TODO: Verify this works
       context.signout();
       return;
     }

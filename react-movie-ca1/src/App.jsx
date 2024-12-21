@@ -42,20 +42,18 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const [session, setSession] = useState(null);
-
   return (
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
           <BrowserRouter>
-            <SiteHeader session={session} />
+            <SiteHeader />
             <MoviesContextProvider>
               <Routes>
                 <Route
                   path="/movies/favorites"
-                  element={<FavoriteMoviesPage session={session} />}
+                  element={<FavoriteMoviesPage />}
                 />
                 <Route path="/reviews/:id" element={<MovieReviewPage />} />
                 <Route path="/movies/:id" element={<MoviePage />} />
@@ -64,7 +62,7 @@ const App = () => {
                 <Route element={<ProtectedRoutes />}>
                   <Route
                     path="/reviews/form"
-                    element={<AddMovieReviewPage session={session} />}
+                    element={<AddMovieReviewPage />}
                   />
                 </Route>
                 <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
@@ -77,7 +75,7 @@ const App = () => {
                 <Route path="/signIn" element={<SignInPage />} />
                 <Route
                   path="/movies/to-watch"
-                  element={<ToWatchMoviesPage session={session} />}
+                  element={<ToWatchMoviesPage />}
                 />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={ <SignUpPage /> } />

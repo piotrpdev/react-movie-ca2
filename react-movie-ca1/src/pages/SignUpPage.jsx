@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
 
-const SignUpPage = props => {
+const SignUpPage = () => {
   const context = useContext(AuthContext)
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");

@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
-const WriteReviewIcon = ({ movie, session }) => {
+const WriteReviewIcon = ({ movie }) => {
+  const context = useContext(AuthContext);
+
   return (
     <Link
       to={`/reviews/form`}
@@ -11,7 +15,7 @@ const WriteReviewIcon = ({ movie, session }) => {
     >
       <RateReviewIcon
         sx={{ transform: "translateY(4px)" }}
-        color={session ? "primary" : "disabled"}
+        color={context.isAuthenticated ? "primary" : "disabled"}
         fontSize="large"
       />
     </Link>

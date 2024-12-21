@@ -6,7 +6,7 @@ import ReviewForm from "../components/ReviewForm";
 import Spinner from "../components/Spinner";
 import PageTemplate from "../components/TemplateMoviePage";
 
-const WriteReviewPage = ({ session }) => {
+const WriteReviewPage = () => {
   const location = useLocation();
   const movieId = location.state.movieId;
 
@@ -19,10 +19,6 @@ const WriteReviewPage = ({ session }) => {
     queryKey: ["movie", { id: movieId }],
     queryFn: getMovie,
   });
-
-  if (!session) {
-    return <Navigate to="/signIn" replace />;
-  }
 
   if (isLoading) {
     return <Spinner />;
