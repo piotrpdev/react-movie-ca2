@@ -91,7 +91,7 @@ router.get('/tmdb/trending/movie/day', asyncHandler(async (req, res) => {
     res.status(200).json(trendingMovies);
 }));
 
-router.get('/tmdb/movie/top_rated', asyncHandler(async (req, res) => {
+router.get('/tmdb/top_rated', asyncHandler(async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const topRatedMovies = await getTopRatedMovies({ page });
     res.status(200).json(topRatedMovies);
