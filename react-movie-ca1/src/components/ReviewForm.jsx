@@ -11,8 +11,6 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { supabase } from "../supabaseClient";
-
 const labels = {
   1: "Terrible",
   2: "Poor",
@@ -79,16 +77,16 @@ const ReviewForm = ({ movie }) => {
     review.movieId = movie.id;
     review.rating = rating;
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    // const {
+    //   data: { user },
+    // } = await supabase.auth.getUser();
 
-    const { error } = await supabase.from("reviews").insert({
-      movieId: movie.id,
-      author: user.id,
-      review: review.review,
-      rating: review.rating,
-    });
+    // const { error } = await supabase.from("reviews").insert({
+    //   movieId: movie.id,
+    //   author: user.id,
+    //   review: review.review,
+    //   rating: review.rating,
+    // });
 
     setOpen(true); // NEW
   };

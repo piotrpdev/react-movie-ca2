@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { getMovieReviews } from "../api/tmdb-api";
-import { supabase } from "../supabaseClient";
 import { excerpt } from "../util";
 import Spinner from "./Spinner";
 
@@ -23,22 +22,22 @@ export default function MovieReviews({ movie }) {
 
   useEffect(() => {
     const fetchReviews = async () => {
-      const { data, error } = await supabase
-        .from("reviews")
-        .select(
-          `
-          *,
-          profiles (
-            name
-          )
-      `,
-        )
-        .eq("movieId", movie.id);
-      if (error) {
-        console.error("Error fetching reviews", error);
-        return;
-      }
-      setOurReviews(data);
+      // const { data, error } = await supabase
+      //   .from("reviews")
+      //   .select(
+      //     `
+      //     *,
+      //     profiles (
+      //       name
+      //     )
+      // `,
+      //   )
+      //   .eq("movieId", movie.id);
+      // if (error) {
+      //   console.error("Error fetching reviews", error);
+      //   return;
+      // }
+      // setOurReviews(data);
     };
 
     fetchReviews();

@@ -20,7 +20,6 @@ import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
 import ToWatchMoviesPage from "./pages/ToWatchMoviesPage";
 import TrendingMoviesPage from "./pages/TrendingMoviesPage";
 import UpcomingMoviesPage from "./pages/UpcomingMoviesPage";
-import { supabase } from "./supabaseClient";
 
 const darkTheme = createTheme({
   palette: {
@@ -40,20 +39,6 @@ const queryClient = new QueryClient({
 
 const App = () => {
   const [session, setSession] = useState(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

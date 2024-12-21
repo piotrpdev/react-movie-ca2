@@ -12,8 +12,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { supabase } from "../supabaseClient";
-
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ session }) => {
@@ -42,14 +40,14 @@ const SiteHeader = ({ session }) => {
 
   const handleMenuSelect = async (pageURL) => {
     if (pageURL === "#signOut") {
-      supabase.auth.signOut();
+      // supabase.auth.signOut();
       return;
     }
 
     if (pageURL === "#signIn") {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "github",
-      });
+      // const { error } = await supabase.auth.signInWithOAuth({
+      //   provider: "github",
+      // });
       return;
     }
 
