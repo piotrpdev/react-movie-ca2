@@ -25,17 +25,20 @@ const SiteHeader = () => {
 
   const navigate = useNavigate();
 
-  const menuOptions = [
+  let menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favorites", path: "/movies/favorites" },
-    { label: "To Watch", path: "/movies/to-watch" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Trending", path: "/movies/trending" },
     { label: "Top Rated", path: "/movies/top-rated" },
   ];
 
   if (context.isAuthenticated) {
-    menuOptions.push({ label: "Sign Out", path: "#signOut" });
+    menuOptions = [
+      ...menuOptions,
+      { label: "Favorites", path: "/movies/favorites" },
+      { label: "To Watch", path: "/movies/to-watch" },
+      { label: "Sign Out", path: "#signOut" }
+    ];
   } else {
     menuOptions.push({ label: "Sign In", path: "/login" });
   }
