@@ -24,6 +24,7 @@ const SignUpPage = () => {
     return <Navigate to="/login" />;
   }
 
+  // TODO: Use Material UI
   return (
     <>
       <h2>SignUp page</h2>

@@ -4,7 +4,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import SiteHeader from "./components/SiteHeader";
@@ -15,7 +14,6 @@ import HomePage from "./pages/HomePage";
 import MoviePage from "./pages/MovieDetailsPage";
 import MovieReviewPage from "./pages/MovieReviewPage";
 import PersonDetailsPage from "./pages/PersonDetailsPage";
-import SignInPage from "./pages/SignInPage";
 import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
 import ToWatchMoviesPage from "./pages/ToWatchMoviesPage";
 import TrendingMoviesPage from "./pages/TrendingMoviesPage";
@@ -72,7 +70,6 @@ const App = () => {
                   element={<TopRatedMoviesPage />}
                 />
                 <Route path="/person/:id" element={<PersonDetailsPage />} />
-                <Route path="/signIn" element={<SignInPage />} />
                 <Route
                   path="/movies/to-watch"
                   element={<ToWatchMoviesPage />}

@@ -3,7 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
 import { Link } from "react-router-dom";
 
-const LoginPage = props => {
+const LoginPage = () => {
     const context = useContext(AuthContext);
 
     const [userName, setUserName] = useState("");
@@ -22,6 +22,7 @@ const LoginPage = props => {
         return <Navigate to={from} />;
     }
 
+    // TODO: Use Material UI
     return (
         <>
             <h2>Login page</h2>
