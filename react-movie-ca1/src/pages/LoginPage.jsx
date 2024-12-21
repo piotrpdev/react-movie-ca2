@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
+import Alert from '@mui/material/Alert';
 
 const styles = {
   root: {
@@ -46,8 +47,26 @@ const LoginPage = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    const login = () => {
-        context.authenticate(userName, password);
+    const [usernameError, setUsernameError] = useState(false);
+    const isUsernameValid = () => userName.length > 0;
+
+    const [passwordError, setPasswordError] = useState(false);
+    const isPasswordValid = () => password.length > 0;
+
+    const [loginError, setLoginError] = useState("");
+
+    const login = async () => {
+        setLoginError("");
+        setUsernameError(!isUsernameValid());
+        setPasswordError(!isPasswordValid());
+
+        if (!isUsernameValid() || !isPasswordValid()) return;
+
+        let response = await context.authenticate(userName, password);
+
+        if (!response.success) {
+            setLoginError(response.msg);
+        }
     };
 
     let location = useLocation();
@@ -76,6 +95,8 @@ const LoginPage = () => {
 
                                 <Stack spacing={3} style={{ marginTop: "25px", marginBottom: "15px" }}>
                                     <TextField
+                                        error={usernameError}
+                                        helperText={usernameError ? "Username required" : ""}
                                         sx={ styles.formControl }
                                         id="username"
                                         label="Username"
@@ -87,6 +108,8 @@ const LoginPage = () => {
                                         autoWidth
                                     />
                                     <TextField
+                                        error={passwordError}
+                                        helperText={passwordError ? "Password required" : ""}
                                         sx={ styles.formControl }
                                         id="password"
                                         type="password"
@@ -107,6 +130,8 @@ const LoginPage = () => {
                                     >
                                         Log in
                                     </Button>
+
+                                    {loginError && <Alert severity="error">{loginError}</Alert>}
                                 </Stack>
 
                                 <Typography variant="subtitle1">Not Registered? <Link to="/signup">Sign Up!</Link></Typography>

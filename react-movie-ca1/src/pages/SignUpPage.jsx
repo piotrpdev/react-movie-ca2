@@ -39,6 +39,9 @@ const styles = {
   }
 };
 
+// @@@@@aS1
+const passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
 const SignUpPage = () => {
   const context = useContext(AuthContext)
   const [userName, setUserName] = useState("");
@@ -46,12 +49,21 @@ const SignUpPage = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const [registered, setRegistered] = useState(false);
 
-  const register = () => {
-    // @@@@@aS1
-    let passwordRegEx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    const validPassword = passwordRegEx.test(password);
+  const [usernameError, setUsernameError] = useState(false);
+  const isUsernameValid = () => userName.length > 0;
 
-    if (validPassword && password === passwordAgain) {
+  const [passwordError, setPasswordError] = useState(false);
+  const isPasswordValid = () => passwordRegEx.test(password);
+
+  const [passwordAgainError, setPasswordAgainError] = useState(false);
+  const isPasswordAgainValid = () => password === passwordAgain;
+
+  const register = () => {
+    setUsernameError(!isUsernameValid());
+    setPasswordError(!isPasswordValid());
+    setPasswordAgainError(!isPasswordAgainValid());
+
+    if (isUsernameValid() && isPasswordValid() && isPasswordAgainValid()) {
       context.register(userName, password);
       setRegistered(true);
     }
@@ -78,6 +90,8 @@ const SignUpPage = () => {
 
                           <Stack spacing={3} style={{ marginTop: "25px", marginBottom: "15px" }}>
                               <TextField
+                                  error={usernameError}
+                                  helperText={usernameError ? "Username is required" : ""}
                                   sx={ styles.formControl }
                                   id="username"
                                   label="Username"
@@ -89,6 +103,8 @@ const SignUpPage = () => {
                                   autoWidth
                               />
                               <TextField
+                                  error={passwordError}
+                                  helperText={passwordError ? "Need 8 characters, one letter, one number and one special character" : ""}
                                   sx={ styles.formControl }
                                   id="password"
                                   type="password"
@@ -101,6 +117,8 @@ const SignUpPage = () => {
                                   autoWidth
                               />
                               <TextField
+                                  error={passwordAgainError}
+                                  helperText={passwordAgainError ? "Passwords must match" : ""}
                                   sx={ styles.formControl }
                                   id="passwordAgain"
                                   type="password"
