@@ -108,7 +108,7 @@ export default function FilterMoviesCard(props) {
           <Stack spacing={2} direction="row">
             <SearchIcon fontSize="large" />
             <Typography variant="h5" component="h1">
-              Filter the movies.
+              Filter movies
             </Typography>
           </Stack>
           <TextField
@@ -217,7 +217,7 @@ export default function FilterMoviesCard(props) {
         <Stack spacing={2} direction="row">
           <SearchIcon fontSize="large" />
           <Typography variant="h5" component="h1">
-            Filter the movies.
+            Filter movies
           </Typography>
         </Stack>
       </CardContent>
