@@ -9,14 +9,16 @@ import { useTheme } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ session }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const context = useContext(AuthContext);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -32,22 +34,16 @@ const SiteHeader = ({ session }) => {
     { label: "Top Rated", path: "/movies/top-rated" },
   ];
 
-  if (session) {
+  if (context.isAuthenticated) {
     menuOptions.push({ label: "Sign Out", path: "#signOut" });
   } else {
-    menuOptions.push({ label: "Sign In", path: "#signIn" });
+    menuOptions.push({ label: "Sign In", path: "/login" });
   }
 
   const handleMenuSelect = async (pageURL) => {
     if (pageURL === "#signOut") {
-      // supabase.auth.signOut();
-      return;
-    }
-
-    if (pageURL === "#signIn") {
-      // const { error } = await supabase.auth.signInWithOAuth({
-      //   provider: "github",
-      // });
+      // TODO: Verify this works
+      context.signout();
       return;
     }
 

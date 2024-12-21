@@ -20,6 +20,10 @@ import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
 import ToWatchMoviesPage from "./pages/ToWatchMoviesPage";
 import TrendingMoviesPage from "./pages/TrendingMoviesPage";
 import UpcomingMoviesPage from "./pages/UpcomingMoviesPage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
+import AuthContextProvider from "./contexts/AuthContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -42,41 +46,47 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <BrowserRouter>
-          <SiteHeader session={session} />
-          <MoviesContextProvider>
-            <Routes>
-              <Route
-                path="/movies/favorites"
-                element={<FavoriteMoviesPage session={session} />}
-              />
-              <Route path="/reviews/:id" element={<MovieReviewPage />} />
-              <Route path="/movies/:id" element={<MoviePage />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="*" element={<Navigate to="/" />} />
-              <Route
-                path="/reviews/form"
-                element={<AddMovieReviewPage session={session} />}
-              />
-              <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-              <Route path="/movies/trending" element={<TrendingMoviesPage />} />
-              <Route
-                path="/movies/top-rated"
-                element={<TopRatedMoviesPage />}
-              />
-              <Route path="/person/:id" element={<PersonDetailsPage />} />
-              <Route path="/signIn" element={<SignInPage />} />
-              <Route
-                path="/movies/to-watch"
-                element={<ToWatchMoviesPage session={session} />}
-              />
-            </Routes>
-          </MoviesContextProvider>
-        </BrowserRouter>
-      </ThemeProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <AuthContextProvider>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <BrowserRouter>
+            <SiteHeader session={session} />
+            <MoviesContextProvider>
+              <Routes>
+                <Route
+                  path="/movies/favorites"
+                  element={<FavoriteMoviesPage session={session} />}
+                />
+                <Route path="/reviews/:id" element={<MovieReviewPage />} />
+                <Route path="/movies/:id" element={<MoviePage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="*" element={<Navigate to="/" />} />
+                <Route element={<ProtectedRoutes />}>
+                  <Route
+                    path="/reviews/form"
+                    element={<AddMovieReviewPage session={session} />}
+                  />
+                </Route>
+                <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+                <Route path="/movies/trending" element={<TrendingMoviesPage />} />
+                <Route
+                  path="/movies/top-rated"
+                  element={<TopRatedMoviesPage />}
+                />
+                <Route path="/person/:id" element={<PersonDetailsPage />} />
+                <Route path="/signIn" element={<SignInPage />} />
+                <Route
+                  path="/movies/to-watch"
+                  element={<ToWatchMoviesPage session={session} />}
+                />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={ <SignUpPage /> } />
+              </Routes>
+            </MoviesContextProvider>
+          </BrowserRouter>
+        </ThemeProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </AuthContextProvider>
     </QueryClientProvider>
   );
 };
