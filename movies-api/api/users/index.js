@@ -6,6 +6,10 @@ import jwt from 'jsonwebtoken';
 const router = express.Router(); // eslint-disable-line
 
 async function registerUser(req, res) {
+    const user = await User.findByUserName(req.body.username);
+    if (user) {
+        return res.status(403).json({ success: false, msg: 'Username already taken.' });   
+    }
     // Add input validation logic here
     await User.create(req.body);
     res.status(201).json({ success: true, msg: 'User successfully created.' });
@@ -14,7 +18,7 @@ async function registerUser(req, res) {
 async function authenticateUser(req, res) {
     const user = await User.findByUserName(req.body.username);
     if (!user) {
-        return res.status(401).json({ success: false, msg: 'Authentication failed. User not found.' });
+        return res.status(401).json({ success: false, msg: 'User not found.' });
     }
 
     const isMatch = await user.comparePassword(req.body.password);

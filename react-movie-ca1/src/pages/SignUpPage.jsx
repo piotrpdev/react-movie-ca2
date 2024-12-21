@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
+import Alert from '@mui/material/Alert';
 
 const styles = {
   root: {
@@ -58,13 +59,22 @@ const SignUpPage = () => {
   const [passwordAgainError, setPasswordAgainError] = useState(false);
   const isPasswordAgainValid = () => password === passwordAgain;
 
-  const register = () => {
+  const [signUpError, setSignUpError] = useState("");
+
+  const register = async () => {
+    setSignUpError("");
     setUsernameError(!isUsernameValid());
     setPasswordError(!isPasswordValid());
     setPasswordAgainError(!isPasswordAgainValid());
 
     if (isUsernameValid() && isPasswordValid() && isPasswordAgainValid()) {
-      context.register(userName, password);
+      const response = await context.register(userName, password);
+
+      if (!response.success) {
+        setSignUpError(response.msg);
+        return;
+      }
+
       setRegistered(true);
     }
   }
@@ -139,6 +149,8 @@ const SignUpPage = () => {
                               >
                                   Sign Up
                               </Button>
+
+                              {signUpError && <Alert severity="error">{signUpError}</Alert>}
                           </Stack>
                       </Stack>
                   </CardContent>
