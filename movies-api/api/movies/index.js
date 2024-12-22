@@ -5,6 +5,17 @@ import movieModel from "./movieModel";
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /movies/:
+ *   get:
+ *     summary: Get all movies.
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -32,7 +43,24 @@ router.get(
   }),
 );
 
-// Get movie details
+/**
+ * @swagger
+ * /movies/{id}:
+ *   put:
+ *     summary: Get movie details by ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of the movie to get
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '404':
+ *         description: Movie not found
+ */
 router.get(
   "/:id",
   asyncHandler(async (req, res) => {

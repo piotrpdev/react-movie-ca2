@@ -49,7 +49,36 @@ router.get("/", async (req, res) => {
   res.status(200).json(users);
 });
 
-// register(Create)/Authenticate User
+/**
+ * @swagger
+ * /users/:
+ *   post:
+ *    summary: Register or authenticate a user.
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              username:
+ *                type: string
+ *              password:
+ *                type: string
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ *      '201':
+ *        description: User successfully created
+ *      '400':
+ *        description: Username and password are required
+ *      '401':
+ *        description: User not found or wrong password
+ *      '403':
+ *        description: Username already taken
+ *      '500':
+ *        description: Internal server error
+ */
 router.post(
   "/",
   asyncHandler(async (req, res) => {
@@ -72,7 +101,35 @@ router.post(
   }),
 );
 
-// Update a user
+/**
+ * @swagger
+ * /users/{id}:
+ *   put:
+ *     summary: Update a user.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of the user to update
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: User updated successfully
+ *       '404':
+ *         description: Unable to update user
+ */
 router.put("/:id", async (req, res) => {
   if (req.body._id) delete req.body._id;
   const result = await User.updateOne(
