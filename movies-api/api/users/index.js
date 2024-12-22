@@ -47,7 +47,8 @@ async function authenticateUser(req, res) {
  *         description: Internal server error
  */
 router.get("/", async (req, res) => {
-  const users = await User.find();
+  // const users = await User.find();
+  const users = await User.find({}, { password: 0 });
   res.status(200).json(users);
 });
 
@@ -145,7 +146,7 @@ router.put("/:id", async (req, res) => {
     req.body,
   );
   if (result.matchedCount) {
-    res.status(200).json({ code: 200, msg: "User Updated Sucessfully" });
+    res.status(200).json({ code: 200, msg: "User Updated Successfully" });
   } else {
     res.status(404).json({ code: 404, msg: "Unable to Update User" });
   }
