@@ -9,41 +9,23 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { getMovieReviews } from "../api/tmdb-api";
+import { getMongoReviews, getMovieReviews } from "../api/tmdb-api";
 import { excerpt } from "../util";
 import Spinner from "./Spinner";
 
 export default function MovieReviews({ movie }) {
-  const [ourReviews, setOurReviews] = useState([]);
   const { data, error, isLoading, isError } = useQuery({
     queryKey: ["reviews", { id: movie.id }],
     queryFn: getMovieReviews,
   });
 
-  useEffect(() => {
-    const fetchReviews = async () => {
-      // const { data, error } = await supabase
-      //   .from("reviews")
-      //   .select(
-      //     `
-      //     *,
-      //     profiles (
-      //       name
-      //     )
-      // `,
-      //   )
-      //   .eq("movieId", movie.id);
-      // if (error) {
-      //   console.error("Error fetching reviews", error);
-      //   return;
-      // }
-      // setOurReviews(data);
-    };
+  const { data: mongoData, error: mongoError, isLoading: mongoIsLoading, isError: mongoIsError } = useQuery({
+    queryKey: ["mongoReviews", { id: movie.id }],
+    queryFn: getMongoReviews,
+    retry: false,
+  });
 
-    fetchReviews();
-  }, []);
-
-  if (isLoading) {
+  if (isLoading || mongoIsLoading) {
     return <Spinner />;
   }
 
@@ -52,6 +34,7 @@ export default function MovieReviews({ movie }) {
   }
 
   const reviews = data.results;
+  const ourReviews = mongoData?.results;
 
   return (
     <TableContainer component={Paper}>
@@ -83,18 +66,20 @@ export default function MovieReviews({ movie }) {
               </TableCell>
             </TableRow>
           ))}
-          {ourReviews.map((r) => (
-            <TableRow key={r.id}>
+          {
+            mongoIsError ? <TableRow><TableCell colSpan={3}>Sign in to see our reviews</TableCell></TableRow> :
+          ourReviews.map((r) => (
+            <TableRow key={r._id}>
               <TableCell component="th" scope="row">
-                {r.profiles.name}
+                {r.author.username}
               </TableCell>
               <TableCell>{excerpt(r.review)}</TableCell>
               <TableCell>
                 <Link
-                  to={`/reviews/${r.id}`}
+                  to={`/reviews/${r._id}`}
                   state={{
                     review: {
-                      author: r.profiles.name,
+                      author: r.author.username,
                       content: r.review,
                     },
                     movie: movie,

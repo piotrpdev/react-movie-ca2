@@ -243,6 +243,34 @@ export const getLanguages = () => {
     });
 };
 
+export const getMongoReviews = (args) => {
+  const [, idPart] = args.queryKey;
+  const { id } = idPart;
+
+  const _page = args?.queryKey?.[1]?.page;
+  const page = typeof _page !== "undefined" ? _page : 1;
+
+  return fetch(
+    `http://localhost:8080/api/reviews/movie/${id}?page=${page}`,
+    {
+      headers: {
+        'Authorization': window.localStorage.getItem('token')
+      }
+    }
+  )
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const login = async (username, password) => {
   const response = await fetch('http://localhost:8080/api/users', {
       headers: {

@@ -7,5 +7,9 @@ const  users = [
         'username': 'user2',
         'password': 'test456@',
     },
+    {
+        'username': 'joe',
+        'password': '@@@@@aA2'
+    }
 ];
 export default users;
