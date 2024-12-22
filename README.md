@@ -16,7 +16,8 @@
 - [x] Added username regex validation in app and movies-api.
 - [x] Added login and sign-up pages from labs (changed to use MUI).
 - [x] Added feedback/error message display on login and sign-up pages.
-- [x] Moved all TMDB API calls to movies-api
+- [x] Moved all TMDB API calls to movies-api.
+- [x] Added Swagger documentation endpoint to movies-api.
 
 ### CA1
 
@@ -89,7 +90,7 @@ npm run build
 | `/api/users`                  | Users (Sign-in and Sign-up)           |
 | `/api/reviews`                | POST MongoDB Reviews                  |
 | `/api/reviews/:id`            | DELETE MongoDB Reviews                |
-
+| `/api-docs`                   | Swagger API Documentation             |
 
 ### CA1
 
