@@ -57,7 +57,7 @@ router.get(
 /**
  * @swagger
  * /movies/{id}:
- *   put:
+ *   get:
  *     summary: Get movie details by ID.
  *     parameters:
  *       - in: path
