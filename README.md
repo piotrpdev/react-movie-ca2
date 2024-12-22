@@ -5,12 +5,20 @@
 
 **Made by:** Piotr Placzek (20097618)
 
-TODO:
-
-- [ ] mongoDB "reviews" collection with endpoints for CRUD
-- [ ] Username validation/regex on frontend and API
-
 ## Features (new)
+
+### CA2
+
+- [x] Added movies-api from labs.
+- [x] Added MongoDB "reviews" collection.
+- [x] Added Create, Read and Delete endpoints in movies-api for "reviews" collection.
+- [x] Changed the app to use MongoDB instead of Supabase for storing reviews.
+- [x] Added username regex validation in app and movies-api.
+- [x] Added login and sign-up pages from labs (changed to use MUI).
+- [x] Added feedback/error message display on login and sign-up pages.
+- [x] Moved all TMDB API calls to movies-api
+
+### CA1
 
 - [x] Updated from React Query v3 (outdated) to [TanStack Query][tanstack] v5.
 - [x] Switched from CRA (Webpack) to [Vite][vite] ([much faster and better][web-to-vit]).
@@ -30,20 +38,18 @@ TODO:
 
 > [!NOTE]
 > You will need to provide [your own TMDb API key][tmdb-key].
->
-> You will also need to provide [your own Supabase key][supa].
->
-> - *Make sure to setup GitHub auth and use the [setup.sql] file.*
 
 ```bash
+cd ./react-movie-ca1 # or ./movies-api (same commands)
+
 # Install dependencies
 npm install
 
-# Add TMDb and Supabase keys
+# Add env vars (only in movies-api)
 nano .env.template
 mv .env.template .env
 
-# Run app
+# Run app/movies-api
 npm run dev
 ```
 
@@ -55,6 +61,8 @@ npm run dev
 ```bash
 # Install pre-commit hooks
 pre-commit install
+
+cd ./react-movie-ca1 # or ./movies-api (same commands)
 
 # Start dev server
 npm run dev
@@ -71,6 +79,20 @@ npm run build
 > [!NOTE]
 > All of these endpoints are cached using TanStack Query.
 
+### CA2
+
+(All of the CA1 endpoints were updated to use the movies-api)
+
+| Endpoint                      | Description                           |
+|-------------------------------|---------------------------------------|
+| `/api/reviews/movie/:id`      | READ MongoDB Reviews for Movie        |
+| `/api/users`                  | Users (Sign-in and Sign-up)           |
+| `/api/reviews`                | POST MongoDB Reviews                  |
+| `/api/reviews/:id`            | DELETE MongoDB Reviews                |
+
+
+### CA1
+
 | Endpoint                      | Description                           |
 |-------------------------------|---------------------------------------|
 | `/trending/movie/day`         | Trending Movies                       |
@@ -83,8 +105,21 @@ npm run build
 ## Routing (new)
 
 > [!NOTE]
-> `/reviews/form` is the only protected route i.e. only signed in users can
-> create reviews.
+> These are the protected routes i.e. only a signed-in user can access them:
+>
+> - `/reviews/form`
+> - `/movies/favorites`
+> - `/movies/to-watch`
+
+### CA2
+
+| Route                 | Description                   |
+|-----------------------|-------------------------------|
+| `/login`              | Login                         |
+| `/signup`             | Sign-up                       |
+
+### CA1
+
 
 | Route                 | Description                   |
 |-----------------------|-------------------------------|
