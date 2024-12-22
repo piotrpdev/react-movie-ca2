@@ -8,6 +8,14 @@ const UserSchema = new Schema({
   password: {type: String, required: true }
 });
 
+// https://stackoverflow.com/a/3028646/19020549
+const usernameRegex = /^[a-zA-Z0-9]{3,}$/;
+
+const usernameValidator = (username) => {
+  return usernameRegex.test(username);
+}
+UserSchema.path("username").validate(usernameValidator);
+
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
 const passwordValidator = (password) => {

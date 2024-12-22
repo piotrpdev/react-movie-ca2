@@ -41,6 +41,8 @@ const styles = {
   },
 };
 
+const usernameRegex = /^[a-zA-Z0-9]{3,}$/;
+
 // @@@@@aS1
 const passwordRegEx =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
@@ -53,7 +55,7 @@ const SignUpPage = () => {
   const [registered, setRegistered] = useState(false);
 
   const [usernameError, setUsernameError] = useState(false);
-  const isUsernameValid = () => userName.length > 0;
+  const isUsernameValid = () => usernameRegex.test(userName);
 
   const [passwordError, setPasswordError] = useState(false);
   const isPasswordValid = () => passwordRegEx.test(password);
@@ -106,7 +108,11 @@ const SignUpPage = () => {
                 >
                   <TextField
                     error={usernameError}
-                    helperText={usernameError ? "Username is required" : ""}
+                    helperText={
+                      usernameError
+                        ? "Need 3 characters, only letters and numbers"
+                        : ""
+                    }
                     sx={styles.formControl}
                     id="username"
                     label="Username"
