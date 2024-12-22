@@ -10,6 +10,17 @@ const router = express.Router();
  * /movies/:
  *   get:
  *     summary: Get all movies.
+ *     parameters:
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: page number
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: integer
+ *        description: number of movies per page
  *     responses:
  *       '200':
  *         description: A successful response
