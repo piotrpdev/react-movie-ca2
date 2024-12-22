@@ -6,6 +6,28 @@ import reviewModel from "./reviewModel";
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /reviews/:
+ *   get:
+ *     summary: Get all reviews.
+ *     parameters:
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: page number
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: integer
+ *        description: number of reviews per page
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -61,6 +83,34 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /reviews/movie/{movieId}:
+ *   get:
+ *     summary: Get reviews for a movie by movieId.
+ *     parameters:
+ *      - in: path
+ *        name: movieId
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID of the movie to get reviews for
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: page number
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: integer
+ *        description: number of reviews per page
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/movie/:movieId",
   asyncHandler(async (req, res) => {
@@ -122,6 +172,30 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /reviews/:
+ *   post:
+ *     summary: Create a review.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               movieId:
+ *                 type: integer
+ *               rating:
+ *                 type: integer
+ *               review:
+ *                 type: string
+ *     responses:
+ *       '201':
+ *         description: Review created
+ *       '500':
+ *         description: Internal server error
+ */
 router.post(
   "/",
   asyncHandler(async (req, res) => {
@@ -132,6 +206,22 @@ router.post(
   }),
 );
 
+/**
+ * @swagger
+ * /reviews/{id}:
+ *   delete:
+ *     summary: Delete a review by ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of the review to delete
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
