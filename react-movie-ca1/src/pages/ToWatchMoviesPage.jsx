@@ -1,7 +1,7 @@
 import { useQueries } from "@tanstack/react-query";
 import { useContext } from "react";
 
-import { getMovie } from "../api/tmdb-api";
+import { getMovie } from "../api/movies-api";
 import RemoveFromToWatch from "../components/CardIcons/RemoveFromToWatch";
 import WriteReview from "../components/CardIcons/WriteReview";
 import Spinner from "../components/Spinner";

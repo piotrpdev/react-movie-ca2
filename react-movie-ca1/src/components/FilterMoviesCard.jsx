@@ -12,7 +12,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useQuery } from "@tanstack/react-query";
 
-import { getGenres, getLanguages } from "../api/tmdb-api";
+import { getGenres, getLanguages } from "../api/movies-api";
 import img from "../images/pexels-dziana-hasanbekava-5480827.jpg";
 import Spinner from "./Spinner";
 

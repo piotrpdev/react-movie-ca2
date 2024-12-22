@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getTrendingMovies } from "../api/tmdb-api";
+import { getTrendingMovies } from "../api/movies-api";
 import AddToFavoritesIcon from "../components/CardIcons/AddToFavorites";
 import AddToToWatchListIcon from "../components/CardIcons/AddToToWatchList";
 import Spinner from "../components/Spinner";

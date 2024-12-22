@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
-import { getMongoReviews, getMovieReviews } from "../api/tmdb-api";
+import { getMongoReviews, getMovieReviews } from "../api/movies-api";
 import { excerpt } from "../util";
 import Spinner from "./Spinner";
 

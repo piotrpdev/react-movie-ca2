@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { removeReview } from "../api/tmdb-api";
+import { removeReview } from "../api/movies-api";
 
 const styles = {
   root: {

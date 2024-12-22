@@ -4,7 +4,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import Stack from "@mui/material/Stack";
 import { useQuery } from "@tanstack/react-query";
 
-import { getMovieImages } from "../api/tmdb-api";
+import { getMovieImages } from "../api/movies-api";
 import MovieHeader from "./HeaderMovie";
 import Spinner from "./Spinner";
 

@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
-import { getPersonMovies } from "../api/tmdb-api";
+import { getPersonMovies } from "../api/movies-api";
 import Spinner from "./Spinner";
 
 export default function PersonMovies({ personDetails }) {

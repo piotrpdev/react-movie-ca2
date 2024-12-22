@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { postReview } from "../api/tmdb-api";
+import { postReview } from "../api/movies-api";
 
 const labels = {
   1: "Terrible",

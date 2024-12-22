@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 
-import { getMovie } from "../api/tmdb-api";
+import { getMovie } from "../api/movies-api";
 import ReviewForm from "../components/ReviewForm";
 import Spinner from "../components/Spinner";
 import PageTemplate from "../components/TemplateMoviePage";

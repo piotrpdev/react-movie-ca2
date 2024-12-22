@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
-import { getMovie } from "../api/tmdb-api";
+import { getMovie } from "../api/movies-api";
 import MovieCast from "../components/MovieCast";
 import MovieDetails from "../components/MovieDetails";
 import Spinner from "../components/Spinner";

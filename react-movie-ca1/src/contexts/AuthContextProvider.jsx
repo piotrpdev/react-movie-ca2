@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { login, signup } from "../api/tmdb-api";
+import { login, signup } from "../api/movies-api";
 import { AuthContext } from "./AuthContext";
 
 const AuthContextProvider = (props) => {

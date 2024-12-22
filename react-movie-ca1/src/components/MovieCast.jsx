@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
-import { getMovieCredits } from "../api/tmdb-api";
+import { getMovieCredits } from "../api/movies-api";
 import Spinner from "./Spinner";
 
 export default function MovieCredits({ movie }) {
