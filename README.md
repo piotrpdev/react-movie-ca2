@@ -1,9 +1,14 @@
-# React Movie CA1
+# React Movie CA2
 
 [React][react] SPA for movie browsing and reviewing, using the
 [*"The Movie Database (TMDb)"*][tmdb-key] API.
 
 **Made by:** Piotr Placzek (20097618)
+
+TODO:
+
+- [ ] mongoDB "reviews" collection with endpoints for CRUD
+- [ ] Username validation/regex on frontend and API
 
 ## Features (new)
 
