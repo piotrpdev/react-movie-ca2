@@ -37,6 +37,8 @@ async function authenticateUser(req, res) {
  * @swagger
  * /users/:
  *   get:
+ *     tags:
+ *      - Users
  *     summary: Get all users.
  *     responses:
  *       '200':
@@ -53,6 +55,8 @@ router.get("/", async (req, res) => {
  * @swagger
  * /users/:
  *   post:
+ *    tags:
+ *      - Users
  *    summary: Register or authenticate a user.
  *    requestBody:
  *      required: true
@@ -105,6 +109,8 @@ router.post(
  * @swagger
  * /users/{id}:
  *   put:
+ *     tags:
+ *      - Users
  *     summary: Update a user.
  *     parameters:
  *       - in: path

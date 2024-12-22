@@ -10,6 +10,8 @@ const router = express.Router();
  * @swagger
  * /reviews/:
  *   get:
+ *     tags:
+ *      - Reviews
  *     summary: Get all reviews.
  *     parameters:
  *      - in: query
@@ -87,6 +89,8 @@ router.get(
  * @swagger
  * /reviews/movie/{movieId}:
  *   get:
+ *     tags:
+ *      - Reviews
  *     summary: Get reviews for a movie by movieId.
  *     parameters:
  *      - in: path
@@ -176,6 +180,8 @@ router.get(
  * @swagger
  * /reviews/:
  *   post:
+ *     tags:
+ *      - Reviews
  *     summary: Create a review.
  *     requestBody:
  *       required: true
@@ -210,6 +216,8 @@ router.post(
  * @swagger
  * /reviews/{id}:
  *   delete:
+ *     tags:
+ *      - Reviews
  *     summary: Delete a review by ID.
  *     parameters:
  *       - in: path

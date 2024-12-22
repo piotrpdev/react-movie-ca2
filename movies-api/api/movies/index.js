@@ -9,6 +9,8 @@ const router = express.Router();
  * @swagger
  * /movies/:
  *   get:
+ *     tags:
+ *      - Movies
  *     summary: Get all movies.
  *     parameters:
  *      - in: query
@@ -58,6 +60,8 @@ router.get(
  * @swagger
  * /movies/{id}:
  *   get:
+ *     tags:
+ *      - Movies
  *     summary: Get movie details by ID.
  *     parameters:
  *       - in: path

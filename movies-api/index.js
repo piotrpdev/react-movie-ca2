@@ -29,6 +29,20 @@ const swaggerOptions = {
               url: "http://localhost:8080/api/"
           }
       ],
+      tags: [
+          {
+              name: 'Movies',
+          },
+          {
+              name: 'Users',
+          },
+          {
+              name: 'Reviews',
+          },
+          {
+              name: 'TMDB',
+          }
+      ]
   },
   apis: ['./api/**/index.js']
 }
