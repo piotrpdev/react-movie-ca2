@@ -42,7 +42,17 @@ const swaggerOptions = {
           {
               name: 'TMDB',
           }
-      ]
+      ],
+      // https://swagger.io/docs/specification/v3_0/authentication/bearer-authentication/
+      components: {
+          securitySchemes: {
+              bearerAuth: {
+                  type: 'http',
+                  scheme: 'bearer',
+                  bearerFormat: 'JWT'
+              }
+          }
+      },
   },
   apis: ['./api/**/index.js']
 }

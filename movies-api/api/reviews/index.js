@@ -29,6 +29,8 @@ const router = express.Router();
  *         description: A successful response
  *       '500':
  *         description: Internal server error
+ *     security:
+ *        - bearerAuth: []
  */
 router.get(
   "/",
@@ -114,6 +116,8 @@ router.get(
  *         description: A successful response
  *       '500':
  *         description: Internal server error
+ *     security:
+ *        - bearerAuth: []
  */
 router.get(
   "/movie/:movieId",
@@ -201,6 +205,8 @@ router.get(
  *         description: Review created
  *       '500':
  *         description: Internal server error
+ *     security:
+ *        - bearerAuth: []
  */
 router.post(
   "/",
@@ -229,6 +235,8 @@ router.post(
  *         description: A successful response
  *       '500':
  *         description: Internal server error
+ *     security:
+ *        - bearerAuth: []
  */
 router.delete(
   "/:id",
