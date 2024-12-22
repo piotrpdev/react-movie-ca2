@@ -6,7 +6,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { getMongoReviews, getMovieReviews } from "../api/tmdb-api";
@@ -19,7 +18,11 @@ export default function MovieReviews({ movie }) {
     queryFn: getMovieReviews,
   });
 
-  const { data: mongoData, error: mongoError, isLoading: mongoIsLoading, isError: mongoIsError } = useQuery({
+  const {
+    data: mongoData,
+    isLoading: mongoIsLoading,
+    isError: mongoIsError,
+  } = useQuery({
     queryKey: ["mongoReviews", { id: movie.id }],
     queryFn: getMongoReviews,
     retry: false,
@@ -66,30 +69,34 @@ export default function MovieReviews({ movie }) {
               </TableCell>
             </TableRow>
           ))}
-          {
-            mongoIsError ? <TableRow><TableCell colSpan={3}>Sign in to see our reviews</TableCell></TableRow> :
-          ourReviews.map((r) => (
-            <TableRow key={r._id}>
-              <TableCell component="th" scope="row">
-                {r.author.username}
-              </TableCell>
-              <TableCell>{excerpt(r.review)}</TableCell>
-              <TableCell>
-                <Link
-                  to={`/reviews/${r._id}`}
-                  state={{
-                    review: {
-                      author: r.author.username,
-                      content: r.review,
-                    },
-                    movie: movie,
-                  }}
-                >
-                  Full Review
-                </Link>
-              </TableCell>
+          {mongoIsError ? (
+            <TableRow>
+              <TableCell colSpan={3}>Sign in to see our reviews</TableCell>
             </TableRow>
-          ))}
+          ) : (
+            ourReviews.map((r) => (
+              <TableRow key={r._id}>
+                <TableCell component="th" scope="row">
+                  {r.author.username}
+                </TableCell>
+                <TableCell>{excerpt(r.review)}</TableCell>
+                <TableCell>
+                  <Link
+                    to={`/reviews/${r._id}`}
+                    state={{
+                      review: {
+                        author: r.author.username,
+                        content: r.review,
+                      },
+                      movie: movie,
+                    }}
+                  >
+                    Full Review
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
     </TableContainer>

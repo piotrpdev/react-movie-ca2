@@ -1,6 +1,7 @@
-import { useContext } from "react";
 import RateReviewIcon from "@mui/icons-material/RateReview";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/AuthContext";
 
 const WriteReviewIcon = ({ movie }) => {

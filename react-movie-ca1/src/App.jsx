@@ -7,21 +7,21 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import SiteHeader from "./components/SiteHeader";
+import AuthContextProvider from "./contexts/AuthContextProvider";
 import MoviesContextProvider from "./contexts/MoviesContextProvider";
 import AddMovieReviewPage from "./pages/AddMovieReviewPage";
 import FavoriteMoviesPage from "./pages/FavoriteMoviesPage";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 import MoviePage from "./pages/MovieDetailsPage";
 import MovieReviewPage from "./pages/MovieReviewPage";
 import PersonDetailsPage from "./pages/PersonDetailsPage";
+import ProtectedRoutes from "./pages/ProtectedRoutes";
+import SignUpPage from "./pages/SignUpPage";
 import TopRatedMoviesPage from "./pages/TopRatedMoviesPage";
 import ToWatchMoviesPage from "./pages/ToWatchMoviesPage";
 import TrendingMoviesPage from "./pages/TrendingMoviesPage";
 import UpcomingMoviesPage from "./pages/UpcomingMoviesPage";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
-import ProtectedRoutes from "./pages/ProtectedRoutes";
-import AuthContextProvider from "./contexts/AuthContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -67,15 +67,21 @@ const App = () => {
                 </Route>
                 <Route path="/reviews/:id" element={<MovieReviewPage />} />
                 <Route path="/movies/:id" element={<MoviePage />} />
-                <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-                <Route path="/movies/trending" element={<TrendingMoviesPage />} />
+                <Route
+                  path="/movies/upcoming"
+                  element={<UpcomingMoviesPage />}
+                />
+                <Route
+                  path="/movies/trending"
+                  element={<TrendingMoviesPage />}
+                />
                 <Route
                   path="/movies/top-rated"
                   element={<TopRatedMoviesPage />}
                 />
                 <Route path="/person/:id" element={<PersonDetailsPage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={ <SignUpPage /> } />
+                <Route path="/signup" element={<SignUpPage />} />
               </Routes>
             </MoviesContextProvider>
           </BrowserRouter>

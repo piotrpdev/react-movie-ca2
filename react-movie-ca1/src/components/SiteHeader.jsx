@@ -9,8 +9,9 @@ import { useTheme } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../contexts/AuthContext";
 
 const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
@@ -37,7 +38,7 @@ const SiteHeader = () => {
       ...menuOptions,
       { label: "Favorites", path: "/movies/favorites" },
       { label: "To Watch", path: "/movies/to-watch" },
-      { label: "Sign Out", path: "#signOut" }
+      { label: "Sign Out", path: "#signOut" },
     ];
   } else {
     menuOptions.push({ label: "Sign In", path: "/login" });

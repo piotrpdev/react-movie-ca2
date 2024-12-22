@@ -5,16 +5,6 @@ import { useState } from "react";
 
 import { excerpt } from "../util";
 
-const root = {
-  display: "flex",
-  justifyContent: "center",
-  flexWrap: "wrap",
-  listStyle: "none",
-  padding: 1.5,
-  margin: 0,
-};
-const chip = { margin: 0.5 };
-
 const PersonDetails = ({ personDetails }) => {
   // Don't miss this!
   const [bioLong, setBioLong] = useState(false);

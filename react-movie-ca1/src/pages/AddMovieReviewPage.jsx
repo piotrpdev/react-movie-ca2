@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Navigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { getMovie } from "../api/tmdb-api";
 import ReviewForm from "../components/ReviewForm";
