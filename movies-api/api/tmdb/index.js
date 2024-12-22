@@ -18,6 +18,25 @@ import {
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /tmdb/discover/movie:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get all movies.
+ *     parameters:
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: page number
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/discover/movie",
   asyncHandler(async (req, res) => {
@@ -27,6 +46,26 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/movie/{id}:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get a movie by ID.
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID of the movie to get
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/movie/:id",
   asyncHandler(async (req, res) => {
@@ -36,6 +75,19 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/genres:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get all movie genres.
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/genres",
   asyncHandler(async (req, res) => {
@@ -44,6 +96,26 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/movie/{id}/images:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get images for a movie by ID.
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID of the movie to get images for
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/movie/:id/images",
   asyncHandler(async (req, res) => {
@@ -53,6 +125,31 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/movie/{id}/reviews:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get reviews for a movie by ID.
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID of the movie to get reviews for
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: page number
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/movie/:id/reviews",
   asyncHandler(async (req, res) => {
@@ -63,6 +160,25 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/upcoming:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get upcoming movies.
+ *     parameters:
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: page number
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/upcoming",
   asyncHandler(async (req, res) => {
@@ -72,6 +188,19 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/trending/movie/day:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get trending movies.
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/trending/movie/day",
   asyncHandler(async (req, res) => {
@@ -80,6 +209,25 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/movie/top_rated:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get top rated movies.
+ *     parameters:
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: page number
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/top_rated",
   asyncHandler(async (req, res) => {
@@ -89,6 +237,26 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/movie/{id}/credits:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get credits for a movie by ID.
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID of the movie to get credits for
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/movie/:id/credits",
   asyncHandler(async (req, res) => {
@@ -98,6 +266,26 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/person/{id}:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get person details by ID.
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID of the person to get details for
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/person/:id",
   asyncHandler(async (req, res) => {
@@ -107,6 +295,26 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/person/{id}/movie_credits:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get movies for a person by ID.
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        required: true
+ *        description: ID of the person to get movies for
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/person/:id/movie_credits",
   asyncHandler(async (req, res) => {
@@ -116,6 +324,19 @@ router.get(
   }),
 );
 
+/**
+ * @swagger
+ * /tmdb/configuration/languages:
+ *   get:
+ *     tags:
+ *      - TMDB
+ *     summary: Get all languages.
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get(
   "/configuration/languages",
   asyncHandler(async (req, res) => {
