@@ -33,7 +33,17 @@ async function authenticateUser(req, res) {
   }
 }
 
-// Get all users
+/**
+ * @swagger
+ * /users/:
+ *   get:
+ *     summary: Get all users.
+ *     responses:
+ *       '200':
+ *         description: A successful response
+ *       '500':
+ *         description: Internal server error
+ */
 router.get("/", async (req, res) => {
   const users = await User.find();
   res.status(200).json(users);
