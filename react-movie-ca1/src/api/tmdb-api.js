@@ -282,3 +282,13 @@ export const postReview = async (review) => {
   });
   return response.json();
 };
+
+export const removeReview = async (id) => {
+  const response = await fetch(`http://localhost:8080/api/reviews/${id}`, {
+    method: "delete",
+    headers: {
+      Authorization: window.localStorage.getItem("token"),
+    },
+  });
+  return response.json();
+};

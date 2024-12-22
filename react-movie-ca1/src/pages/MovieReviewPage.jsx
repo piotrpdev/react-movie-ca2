@@ -9,7 +9,7 @@ const MovieReviewPage = () => {
 
   return (
     <PageTemplate movie={movie}>
-      <MovieReview review={review} />
+      <MovieReview movie={movie} review={review} />
     </PageTemplate>
   );
 };

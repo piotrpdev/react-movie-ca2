@@ -122,4 +122,10 @@ router.post('/', asyncHandler(async (req, res) => {
     res.status(201).json(savedReview);
 }));
 
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const deletedReview = await reviewModel.findByIdAndDelete(id);
+    res.status(200).json(deletedReview);
+}));
+
 export default router;

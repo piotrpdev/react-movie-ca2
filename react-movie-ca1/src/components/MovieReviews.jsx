@@ -85,6 +85,7 @@ export default function MovieReviews({ movie }) {
                     to={`/reviews/${r._id}`}
                     state={{
                       review: {
+                        _id: r._id,
                         author: r.author.username,
                         content: r.review,
                       },
