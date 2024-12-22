@@ -14,7 +14,7 @@ export const getMovies = (args) => {
   const page = typeof _page !== "undefined" ? _page : 1;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/discover/movie?page=${page}`
+    `http://localhost:8080/api/tmdb/discover/movie?page=${page}`
   )
     .then((response) => {
       if (!response.ok) {
@@ -34,7 +34,7 @@ export const getMovie = (args) => {
   const { id } = idPart;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/movie/${id}`,
+    `http://localhost:8080/api/tmdb/movie/${id}`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -51,7 +51,7 @@ export const getMovie = (args) => {
 
 export const getGenres = () => {
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/genres`,
+    `http://localhost:8080/api/tmdb/genres`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -71,7 +71,7 @@ export const getMovieImages = ({ queryKey }) => {
   const { id } = idPart;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/movie/${id}/images`,
+    `http://localhost:8080/api/tmdb/movie/${id}/images`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -94,7 +94,7 @@ export const getMovieReviews = (args) => {
   const page = typeof _page !== "undefined" ? _page : 1;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/movie/${id}/reviews?page=${page}`,
+    `http://localhost:8080/api/tmdb/movie/${id}/reviews?page=${page}`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -114,7 +114,7 @@ export const getUpcomingMovies = (args) => {
   const page = typeof _page !== "undefined" ? _page : 1;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/upcoming?page=${page}`,
+    `http://localhost:8080/api/tmdb/upcoming?page=${page}`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -131,7 +131,7 @@ export const getUpcomingMovies = (args) => {
 
 export const getTrendingMovies = () => {
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/trending/movie/day`,
+    `http://localhost:8080/api/tmdb/trending/movie/day`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -151,7 +151,7 @@ export const getTopRatedMovies = (args) => {
   const page = typeof _page !== "undefined" ? _page : 1;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/top_rated?page=${page}`,
+    `http://localhost:8080/api/tmdb/top_rated?page=${page}`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -171,7 +171,7 @@ export const getMovieCredits = ({ queryKey }) => {
   const { id } = idPart;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/movie/${id}/credits`,
+    `http://localhost:8080/api/tmdb/movie/${id}/credits`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -191,7 +191,7 @@ export const getPersonDetails = ({ queryKey }) => {
   const { id } = idPart;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/person/${id}`,
+    `http://localhost:8080/api/tmdb/person/${id}`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -211,7 +211,7 @@ export const getPersonMovies = ({ queryKey }) => {
   const { id } = idPart;
 
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/person/${id}/movie_credits`,
+    `http://localhost:8080/api/tmdb/person/${id}/movie_credits`,
   )
     .then((response) => {
       if (!response.ok) {
@@ -228,7 +228,7 @@ export const getPersonMovies = ({ queryKey }) => {
 
 export const getLanguages = () => {
   return fetch(
-    `http://localhost:8080/api/movies/tmdb/configuration/languages`,
+    `http://localhost:8080/api/tmdb/configuration/languages`,
   )
     .then((response) => {
       if (!response.ok) {
