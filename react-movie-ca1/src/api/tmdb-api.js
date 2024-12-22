@@ -270,3 +270,15 @@ export const signup = async (username, password) => {
   );
   return response.json();
 };
+
+export const postReview = async (review) => {
+  const response = await fetch("http://localhost:8080/api/reviews", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: window.localStorage.getItem("token"),
+    },
+    method: "post",
+    body: JSON.stringify(review),
+  });
+  return response.json();
+};

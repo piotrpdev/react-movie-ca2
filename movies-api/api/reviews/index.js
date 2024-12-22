@@ -115,4 +115,11 @@ router.get('/movie/:movieId', asyncHandler(async (req, res) => {
     res.status(200).json(returnObject);
 }));
 
+router.post('/', asyncHandler(async (req, res) => {
+    const review = req.body;
+    const newReview = new reviewModel({ ...review, author: req.user._id });
+    const savedReview = await newReview.save();
+    res.status(201).json(savedReview);
+}));
+
 export default router;
